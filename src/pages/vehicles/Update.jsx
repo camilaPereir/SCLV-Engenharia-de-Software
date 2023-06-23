@@ -19,7 +19,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`http://localhost:3001/veiculos/${id}`)
+      .get(`http://localhost:3333/veiculo/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -47,10 +47,10 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`http://localhost:3001/veiculos/${id}`, inputs).then((resp) => {
+      axios.put(`http://localhost:3333/veiculo/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
           alert("Veiculo alterado com sucesso");
-          navigate("/veiculos");
+          navigate("/veiculo");
         }
       });
       console.log("Enviou dados para a API");

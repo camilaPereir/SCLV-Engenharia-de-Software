@@ -12,7 +12,7 @@ const Exclusao = () => {
   function carregarDados() {
     // setInputs({ ...inputs, id: id });
     axios
-      .get(`http://localhost:3001/veiculos/${id}`)
+      .get(`http://localhost:3333/veiculos/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setAluno(resp.data);
@@ -31,7 +31,7 @@ const Exclusao = () => {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:3001/veiculos/${id}`)
+      .delete(`http://localhost:3333/veiculos/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           alert("Veículo excluído com sucesso!");

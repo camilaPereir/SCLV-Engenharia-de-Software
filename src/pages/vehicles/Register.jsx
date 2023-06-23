@@ -22,11 +22,11 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post("http://localhost:3001/veiculos", inputs)
+      axios.post("http://localhost:3333/veiculo", inputs)
       .then((resp) => {
         if (resp.status == 201) {
           alert("Veículo inserido com sucesso");
-          navigate("/veiculos")
+          navigate("/veiculo")
         }
       });
       console.log("Enviou dados para a API")

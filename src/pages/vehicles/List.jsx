@@ -9,7 +9,7 @@ const List = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchVehicles = () => {
-    axios.get("http://localhost:3001/veiculos")
+    axios.get("http://localhost:3333/veiculo")
     .then((resp) => {
       setVeiculos(resp.data);
       setLoading(false);
@@ -61,10 +61,10 @@ const List = () => {
                 <td>{vehicle.ano}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/veiculos/alterar/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/veiculo/alterar/${vehicle.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/veiculos/excluir/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/veiculo/excluir/${vehicle.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>
