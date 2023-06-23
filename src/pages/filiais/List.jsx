@@ -5,25 +5,25 @@ import estilos from "./Listagem.module.css";
 import { useState } from "react";
 
 const List = () => {
-  const [vehicles, setVeiculos] = useState([]);
+  const [filiais, setFiliais] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchVehicles = () => {
-    axios.get("http://localhost:3333/veiculo")
+  const fetchFiliais = () => {
+    axios.get("http://localhost:3333/filial/")
     .then((resp) => {
-      setVeiculos(resp.data);
+      setFiliais(resp.data);
       setLoading(false);
     });
   }
 
   useEffect(() => {
-    fetchVehicles();
+    fetchFiliais();
   }, []);
 
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Listagem de Veiculos</h1>
+        <h1>Listagem de Filiais</h1>
         <Link className="btn btn-primary" to="cadastrar">
           Novo
         </Link>
@@ -42,29 +42,32 @@ const List = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Placa</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Cor</th>
-              <th>Ano</th>
-              <th>Ações</th>
+              <th>Nome</th>
+              <th>Limite Diario</th>
+              <th>Rua</th>
+              <th>Bairro</th>
+              <th>Cidade</th>
+              <th>Numero</th>
+              <th>CNPJ</th>
             </tr>
           </thead>
           <tbody>
-            {vehicles.map((vehicle) => (
-              <tr key={vehicle.id}>
-                <td>{vehicle.id}</td>
-                <td>{vehicle.placa}</td>
-                <td>{vehicle.marca}</td>
-                <td>{vehicle.modelo}</td>
-                <td>{vehicle.cor}</td>
-                <td>{vehicle.ano}</td>
+            {filiais.map((filial) => (
+              <tr key={filial.id}>
+                <td>{filial.id}</td>
+                <td>{filial.nome}</td>
+                <td>{filial.limite_diario}</td>
+                <td>{filial.rua}</td>
+                <td>{filial.bairro}</td>
+                <td>{filial.cidade}</td>
+                <td>{filial.numero}</td>
+                <td>{filial.cnpj}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/veiculos/alterar/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/filiais/alterar/${filial.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/veiculos/excluir/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/filiais/excluir/${filial.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>

@@ -5,25 +5,25 @@ import estilos from "./Listagem.module.css";
 import { useState } from "react";
 
 const List = () => {
-  const [vehicles, setVeiculos] = useState([]);
+  const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchVehicles = () => {
-    axios.get("http://localhost:3333/veiculo")
+  const fetchClientes = () => {
+    axios.get("http://localhost:3333/cliente/")
     .then((resp) => {
-      setVeiculos(resp.data);
+      setClientes(resp.data);
       setLoading(false);
     });
   }
 
   useEffect(() => {
-    fetchVehicles();
+    fetchClientes();
   }, []);
 
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Listagem de Veiculos</h1>
+        <h1>Listagem de Clientes</h1>
         <Link className="btn btn-primary" to="cadastrar">
           Novo
         </Link>
@@ -42,29 +42,36 @@ const List = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Placa</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Cor</th>
-              <th>Ano</th>
-              <th>Ações</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>Senha</th>
+              <th>Rua</th>
+              <th>Numero</th>
+              <th>Cidade</th>
+              <th>Bairro</th>
+              <th>Data de Nascimento</th>
             </tr>
           </thead>
           <tbody>
-            {vehicles.map((vehicle) => (
-              <tr key={vehicle.id}>
-                <td>{vehicle.id}</td>
-                <td>{vehicle.placa}</td>
-                <td>{vehicle.marca}</td>
-                <td>{vehicle.modelo}</td>
-                <td>{vehicle.cor}</td>
-                <td>{vehicle.ano}</td>
+            {clientes.map((cliente) => (
+              <tr key={cliente.id}>
+                <td>{cliente.id}</td>
+                <td>{cliente.nome}</td>
+                <td>{cliente.cpf}</td>
+                <td>{cliente.telefone}</td>
+                <td>{cliente.senha}</td>
+                <td>{cliente.rua}</td>
+                <td>{cliente.numero}</td>
+                <td>{cliente.cidade}</td>
+                <td>{cliente.bairro}</td>
+                <td>{cliente.data_nascimento}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/veiculos/alterar/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/clientes/alterar/${cliente.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/veiculos/excluir/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/clientes/excluir/${cliente.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>

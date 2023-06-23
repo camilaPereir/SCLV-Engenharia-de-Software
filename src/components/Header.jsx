@@ -29,6 +29,12 @@ const Header = () => {
             <div className="navbar-nav">
               <NavLink to="/" className="nav-link">Principal</NavLink>
               <NavLink to="/veiculos" className="nav-link">Veiculos</NavLink>
+              <NavLink to="/clientes" className="nav-link">Clientes</NavLink>
+              <NavLink to="/filiais" className="nav-link">Filiais</NavLink>
+              <NavLink to="/funcionarios" className="nav-link">Funcionarios</NavLink>
+              <NavLink to="/tiposervicos" className="nav-link">Tipos de Serviços</NavLink>
+              <NavLink to="/agendamentos" className="nav-link">Agendamentos</NavLink>
+              <NavLink to="/finalizacoes" className="nav-link">Finalizações</NavLink>
               <NavLink to="/sobre" className="nav-link">Sobre</NavLink>
 
               <a href="#" className="nav-link" onClick={handleTemaClick}>
