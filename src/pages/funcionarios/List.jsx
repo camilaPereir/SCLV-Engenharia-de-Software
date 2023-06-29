@@ -5,25 +5,25 @@ import estilos from "./Listagem.module.css";
 import { useState } from "react";
 
 const List = () => {
-  const [clientes, setClientes] = useState([]);
+  const [funcionarios, setFuncionarios] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchClientes = () => {
-    axios.get("http://localhost:3333/cliente/")
+  const fetchFuncionarios = () => {
+    axios.get("http://localhost:3333/funcionario/")
     .then((resp) => {
-      setClientes(resp.data);
+      setFuncionarios(resp.data);
       setLoading(false);
     });
   }
 
   useEffect(() => {
-    fetchClientes();
+    fetchFuncionarios();
   }, []);
 
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Listagem de Clientes</h1>
+        <h1>Listagem de Funcionarios</h1>
         <Link className="btn btn-primary" to="cadastrar">
           Novo
         </Link>
@@ -43,6 +43,7 @@ const List = () => {
             <tr>
               <th>ID</th>
               <th>Nome</th>
+              <th>IDFILIAL</th>
               <th>CPF</th>
               <th>Telefone</th>
               <th>Senha</th>
@@ -54,24 +55,25 @@ const List = () => {
             </tr>
           </thead>
           <tbody>
-            {clientes.map((cliente) => (
-              <tr key={cliente.id}>
-                <td>{cliente.id}</td>
-                <td>{cliente.nome}</td>
-                <td>{cliente.cpf}</td>
-                <td>{cliente.telefone}</td>
-                <td>{cliente.senha}</td>
-                <td>{cliente.rua}</td>
-                <td>{cliente.numero}</td>
-                <td>{cliente.cidade}</td>
-                <td>{cliente.bairro}</td>
-                <td>{cliente.data_nascimento}</td>
+            {funcionarios.map((funcionario) => (
+              <tr key={funcionario.id}>
+                <td>{funcionario.id}</td>
+                <td>{funcionario.nome}</td>
+                <td>{funcionario.idfilial}</td>
+                <td>{funcionario.cpf}</td>
+                <td>{funcionario.telefone}</td>
+                <td>{funcionario.senha}</td>
+                <td>{funcionario.rua}</td>
+                <td>{funcionario.numero}</td>
+                <td>{funcionario.cidade}</td>
+                <td>{funcionario.bairro}</td>
+                <td>{funcionario.data_nascimento}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/clientes/alterar/${cliente.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/funcionarios/alterar/${funcionario.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/clientes/excluir/${cliente.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/funcionarios/excluir/${funcionario.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>

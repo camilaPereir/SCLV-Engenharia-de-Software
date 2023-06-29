@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import validator from "../../lib/clientes/ValidatorCliente";
+import validator from "../../lib/funcionarios/ValidatorFuncionario";
 import { validate, handleChange } from "../../lib/formUtils";
-import FormClientes from "../../components/clientes/Form";
+import FormFuncionario from "../../components/funcionarios/Form";
 
 const Update = () => {
   const [inputs, setInputs] = useState({});
@@ -19,7 +19,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`http://localhost:3333/cliente/${id}`)
+      .get(`http://localhost:3333/funcionario/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -47,10 +47,10 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`http://localhost:3333/cliente/${id}`, inputs).then((resp) => {
+      axios.put(`http://localhost:3333/funcionario/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
-          alert("Cliente alterado com sucesso");
-          navigate("/clientes");
+          alert("funcionario alterado com sucesso");
+          navigate("/funcionarios");
         }
       });
       console.log("Enviou dados para a API");
@@ -63,9 +63,9 @@ const Update = () => {
 
   return (
     <>
-      <h1>Alteração de Cliente</h1>
+      <h1>Alteração de funcionario</h1>
       <hr />
-      <FormVehicle handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
+      <FormFuncionario handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>
   );
 };

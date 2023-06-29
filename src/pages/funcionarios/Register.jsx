@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import validator from "../../lib/clientes/ValidatorCliente";
+import validator from "../../lib/funcionarios/ValidatorFuncionario";
 import { handleChange, validate } from "../../lib/formUtils";
-import FormCliente from "../../components/clientes/Form";
+import FormFuncionario from "../../components/funcionarios/Form";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -22,11 +22,11 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post("http://localhost:3333/cliente", inputs)
+      axios.post("http://localhost:3333/funcionario", inputs)
       .then((resp) => {
         if (resp.status == 201) {
-          alert("Cliente inserido com sucesso");
-          navigate("/clientes")
+          alert("funcionario inserido com sucesso");
+          navigate("/funcionarios")
         }
       });
       console.log("Enviou dados para a API")
@@ -39,9 +39,9 @@ const Register = () => {
 
   return (
     <>
-      <h1>Cadastro de Clientes</h1>
+      <h1>Cadastro de funcionarios</h1>
       <hr />
-      <FormCliente handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
+      <FormFuncionario handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>
   );
 };
