@@ -5,10 +5,31 @@ import Home from './pages/Home';
 import Leiaute from './pages/Leiaute.jsx';
 import NotFound from './pages/NotFound';
 import About from './pages/About';
+
 import RegisterVehicle from './pages/vehicles/Register';
 import DeleteVehicle from './pages/vehicles/Delete';
 import ListVehicle from './pages/vehicles/List';
 import UpdateVehicle from './pages/vehicles/Update';
+
+import RegisterCliente from './pages/clientes/Register';
+import DeleteCliente from './pages/clientes/Delete';
+import ListCliente from './pages/clientes/List';
+import UpdateCliente from './pages/clientes/Update';
+
+import RegisterFilial from './pages/filiais/Register';
+import DeleteFilial from './pages/filiais/Delete';
+import ListFilial from './pages/filiais/List';
+import UpdateFilial from './pages/filiais/Update';
+
+import RegisterFuncionario from './pages/funcionarios/Register';
+import DeleteFuncionario from './pages/funcionarios/Delete';
+import ListFuncionario from './pages/funcionarios/List';
+import UpdateFuncionario from './pages/funcionarios/Update';
+
+import RegisterFinalizacao from './pages/finalizacoes/Register';
+import DeleteFinalizacao from './pages/finalizacoes/Delete';
+import ListFinalizacao from './pages/finalizacoes/List';
+import UpdateFinalizacao from './pages/finalizacoes/Update';
 
 const App = () => {
   const [tema, setTema] = useState("light");
@@ -26,6 +47,30 @@ const App = () => {
                 <Route path="cadastrar" element={<RegisterVehicle />} />
                 <Route path="alterar/:id" element={<UpdateVehicle />} />
                 <Route path="excluir/:id" element={<DeleteVehicle />} />
+              </Route>
+              <Route path="clientes">
+                <Route index element={<ListCliente />} />
+                <Route path="cadastrar" element={<RegisterCliente />} />
+                <Route path="alterar/:id" element={<UpdateCliente />} />
+                <Route path="excluir/:id" element={<DeleteCliente />} />
+              </Route>
+              <Route path="filiais">
+                <Route index element={<ListFilial />} />
+                <Route path="cadastrar" element={<RegisterFilial />} />
+                <Route path="alterar/:id" element={<UpdateFilial />} />
+                <Route path="excluir/:id" element={<DeleteFilial />} />
+              </Route>
+              <Route path="funcionarios">
+                <Route index element={<ListFuncionario />} />
+                <Route path="cadastrar" element={<RegisterFuncionario />} />
+                <Route path="alterar/:id" element={<UpdateFuncionario />} />
+                <Route path="excluir/:id" element={<DeleteFuncionario />} />
+              </Route>
+              <Route path="finalizacoes">
+                <Route index element={<ListFinalizacao />} />
+                <Route path="cadastrar" element={<RegisterFinalizacao />} />
+                <Route path="alterar/:id" element={<UpdateFinalizacao />} />
+                <Route path="excluir/:id" element={<DeleteFinalizacao />} />
               </Route>
             </Route>
           </Routes>

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Exclusao = () => {
-  const [aluno, setAluno] = useState({});
+  const [funcionario, setFuncionario] = useState({});
   const id = useParams().id;
 
   const navigate = useNavigate();
@@ -12,10 +12,10 @@ const Exclusao = () => {
   function carregarDados() {
     // setInputs({ ...inputs, id: id });
     axios
-      .get(`http://localhost:3333/veiculo/${id}`)
+      .get(`http://localhost:3333/funcionario/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          setAluno(resp.data);
+          setFuncionario(resp.data);
         } else {
           console.log(resp);
         }
@@ -31,11 +31,11 @@ const Exclusao = () => {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:3333/veiculo/${id}`)
+      .delete(`http://localhost:3333/funcionario/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          alert("Veículo excluído com sucesso!");
-          navigate("/veiculos");
+          alert("Funcionario excluído com sucesso!");
+          navigate("/funcionarios");
         } else {
           console.log(resp);
         }
@@ -47,10 +47,10 @@ const Exclusao = () => {
 
   return (
     <>
-      <h1>Exclusão de Aluno</h1>
+      <h1>Exclusão de Funcionario</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o aluno {aluno.nome}?</p>
-      <FormButtons cancelTarget="/veiculos" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
+      <p className="lead">Deseja realmente excluir o funcionario {funcionario.nome}?</p>
+      <FormButtons cancelTarget="/funcionarios" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );
 };

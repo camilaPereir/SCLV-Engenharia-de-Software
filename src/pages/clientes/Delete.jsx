@@ -12,7 +12,7 @@ const Exclusao = () => {
   function carregarDados() {
     // setInputs({ ...inputs, id: id });
     axios
-      .get(`http://localhost:3333/veiculo/${id}`)
+      .get(`http://localhost:3333/cliente/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setAluno(resp.data);
@@ -31,11 +31,11 @@ const Exclusao = () => {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:3333/veiculo/${id}`)
+      .delete(`http://localhost:3333/cliente/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          alert("Veículo excluído com sucesso!");
-          navigate("/veiculos");
+          alert("Cliente excluído com sucesso!");
+          navigate("/clientes");
         } else {
           console.log(resp);
         }
@@ -50,7 +50,7 @@ const Exclusao = () => {
       <h1>Exclusão de Aluno</h1>
       <hr />
       <p className="lead">Deseja realmente excluir o aluno {aluno.nome}?</p>
-      <FormButtons cancelTarget="/veiculos" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
+      <FormButtons cancelTarget="/clientes" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );
 };

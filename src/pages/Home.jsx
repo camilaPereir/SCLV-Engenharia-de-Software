@@ -1,4 +1,4 @@
-import img from "../assets/pexels-pixabay-372810.jpg"
+//import img from "../assets/pexels-pixabay-372810.jpg"
 
 const Home = () => {
   return (
