@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import validator from "../../lib/finalizacoes/Validatorfinalizacao";
+import validator from "../../lib/finalizacoes/ValidatorFinalizacao";
 import { handleChange, validate } from "../../lib/formUtils";
 import FormFinalizacao from "../../components/finalizacoes/Form";
 import consts from "../../consts";
