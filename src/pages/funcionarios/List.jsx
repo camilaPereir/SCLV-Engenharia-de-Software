@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import estilos from "./Listagem.module.css";
 import { useState } from "react";
+import consts from "../../consts";
 
 const List = () => {
   const [funcionarios, setFuncionarios] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchFuncionarios = () => {
-    axios.get("http://localhost:3333/funcionario/")
+    axios.get(`${consts.API_URL}/funcionario/`)
     .then((resp) => {
       setFuncionarios(resp.data);
       setLoading(false);

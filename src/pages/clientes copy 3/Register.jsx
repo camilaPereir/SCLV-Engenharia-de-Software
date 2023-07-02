@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validator from "../../lib/clientes/ValidatorCliente";
 import { handleChange, validate } from "../../lib/formUtils";
 import FormCliente from "../../components/clientes/Form";
+import consts from "../../consts";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -22,7 +23,7 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post("http://localhost:3333/cliente", inputs)
+      axios.post(`${consts.API_URL}/cliente`, inputs)
       .then((resp) => {
         if (resp.status == 201) {
           alert("Cliente inserido com sucesso");

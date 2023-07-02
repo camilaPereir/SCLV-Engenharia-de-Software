@@ -5,6 +5,7 @@ import FormInput from "../utils/FormInput";
 import { useEffect, useState } from "react";
 import FormSelect from "../utils/FormSelect";
 import axios from "axios";
+import consts from "../../consts";
 
 const FormVehicles = ({ handleSubmit, handleChange, errors, inputs }) => {
 
@@ -13,7 +14,7 @@ const FormVehicles = ({ handleSubmit, handleChange, errors, inputs }) => {
     const navigate = useNavigate();
 
     function fetchVehicles() {
-        axios.get(`http://localhost:3333/cliente`)
+        axios.get(`${consts.API_URL}/cliente`)
             .then((resp) => {
                 if (resp.status === 200) {
                     const dados = resp.data.map((obj) => {

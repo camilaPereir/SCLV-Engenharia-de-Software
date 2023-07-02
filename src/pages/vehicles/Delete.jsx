@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import FormButtons from "../../components/utils/FormButtons";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import consts from "../../consts";
 
 const Exclusao = () => {
   const [aluno, setAluno] = useState({});
@@ -12,7 +13,7 @@ const Exclusao = () => {
   function carregarDados() {
     // setInputs({ ...inputs, id: id });
     axios
-      .get(`http://localhost:3333/veiculo/${id}`)
+      .get(`${consts.API_URL}/veiculo/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setAluno(resp.data);
@@ -31,7 +32,7 @@ const Exclusao = () => {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:3333/veiculo/${id}`)
+      .delete(`${consts.API_URL}/veiculo/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           alert("Veículo excluído com sucesso!");

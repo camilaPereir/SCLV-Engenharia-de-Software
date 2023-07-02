@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validator from "../../lib/funcionarios/ValidatorFuncionario";
 import { handleChange, validate } from "../../lib/formUtils";
 import FormFuncionario from "../../components/funcionarios/Form";
+import consts from "../../consts";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -22,7 +23,7 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post("http://localhost:3333/funcionario", inputs)
+      axios.post(`${consts.API_URL}/funcionario`, inputs)
       .then((resp) => {
         if (resp.status == 201) {
           alert("funcionario inserido com sucesso");
