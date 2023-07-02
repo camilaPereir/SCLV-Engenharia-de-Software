@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validator from "../../lib/filiais/ValidatorFilial";
 import { handleChange, validate } from "../../lib/formUtils";
 import FormFilial from "../../components/filiais/Form";
+import consts from "../../consts";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -22,7 +23,7 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post("http://localhost:3333/filial/", inputs)
+      axios.post(`${consts.API_URL}/filial/`, inputs)
       .then((resp) => {
         if (resp.status == 201) {
           alert("Filial inserida com sucesso");

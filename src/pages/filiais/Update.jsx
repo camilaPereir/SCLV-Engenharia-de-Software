@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import validator from "../../lib/filiais/ValidatorFilial";
 import { validate, handleChange } from "../../lib/formUtils";
 import FormFilial from "../../components/filiais/Form";
+import consts from "../../consts";
 
 const Update = () => {
   const [inputs, setInputs] = useState({});
@@ -19,7 +20,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`http://localhost:3333/filial/${id}`)
+      .get(`${consts.API_URL}/filial/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -47,7 +48,7 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`http://localhost:3333/filial/${id}`, inputs).then((resp) => {
+      axios.put(`${consts.API_URL}/filial/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
           alert("Filial alterada com sucesso");
           navigate("/filiais");
