@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import estilos from "./Listagem.module.css";
 import { useState } from "react";
+import consts from "../../consts";
 
 const List = () => {
   const [filiais, setFiliais] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchFiliais = () => {
-    axios.get("http://localhost:3333/filial/")
+    axios.get(`${consts.API_URL}/filial/`)
     .then((resp) => {
       setFiliais(resp.data);
       setLoading(false);
