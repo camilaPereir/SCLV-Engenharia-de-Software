@@ -51,7 +51,7 @@ const Update = () => {
       axios.put(`${consts.API_URL}/veiculo/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
           alert("Veiculo alterado com sucesso");
-          navigate("/veiculo");
+          navigate("/veiculos");
         }
       });
       console.log("Enviou dados para a API");

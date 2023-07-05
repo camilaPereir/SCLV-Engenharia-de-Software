@@ -62,10 +62,10 @@ const List = () => {
                 <td>{vehicle.ano}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/veiculo/alterar/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/veiculos/alterar/${vehicle.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/veiculo/excluir/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/veiculos/excluir/${vehicle.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>

@@ -4,19 +4,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import consts from "../../consts";
 
-const Exclusao = () => {
-  const [aluno, setAluno] = useState({});
+const Delete = () => {
+  const [vehicle, setVehicle] = useState({});
   const id = useParams().id;
 
   const navigate = useNavigate();
 
-  function carregarDados() {
+  function fetchData() {
     // setInputs({ ...inputs, id: id });
     axios
       .get(`${consts.API_URL}/veiculo/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          setAluno(resp.data);
+          setVehicle(resp.data);
         } else {
           console.log(resp);
         }
@@ -27,7 +27,7 @@ const Exclusao = () => {
   }
 
   useEffect(() => {
-    carregarDados();
+    fetchData();
   }, [id]);
 
   function handleDelete() {
@@ -48,12 +48,12 @@ const Exclusao = () => {
 
   return (
     <>
-      <h1>Exclusão de Aluno</h1>
+      <h1>Exclusão de Veículo</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o aluno {aluno.nome}?</p>
+      <p className="lead">Deseja realmente excluir o Veículo {vehicle.placa}?</p>
       <FormButtons cancelTarget="/veiculos" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );
 };
 
-export default Exclusao;
+export default Delete;

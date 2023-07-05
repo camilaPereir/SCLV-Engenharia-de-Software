@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validator from "../../lib/vehicles/ValidatorVehicle";
 import { handleChange, validate } from "../../lib/formUtils";
 import FormVehicle from "../../components/vehicles/Form";
+import consts from "../../consts";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -16,17 +17,21 @@ const Register = () => {
   }
 
   function handleChangeLocal(e) {
-    handleChange(e, setInputs, inputs)
+    handleChange(e, setInputs, inputs, validatorFields)
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post(`${consts.API_URL}/veiculo`, inputs)
+      const postData = {
+        ...inputs,
+        cliente: { id: inputs.idcliente }
+      };
+      axios.post(`${consts.API_URL}/veiculo`, postData)
       .then((resp) => {
-        if (resp.status == 201) {
+        if (resp.status == 200) {
           alert("Veículo inserido com sucesso");
-          navigate("/veiculo")
+          navigate("/veiculos")
         }
       });
       console.log("Enviou dados para a API")
