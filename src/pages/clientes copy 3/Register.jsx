@@ -25,7 +25,7 @@ const Register = () => {
     validatorFields(() => {
       axios.post(`${consts.API_URL}/cliente`, inputs)
       .then((resp) => {
-        if (resp.status == 201) {
+        if (resp.status == 200) {
           alert("Cliente inserido com sucesso");
           navigate("/clientes")
         }
