@@ -4,8 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import consts from "../../consts";
 
-const Exclusao = () => {
-  const [aluno, setAluno] = useState({});
+const Delete = () => {
+  const [typeService, setTypeService] = useState({});
   const id = useParams().id;
 
   const navigate = useNavigate();
@@ -13,10 +13,10 @@ const Exclusao = () => {
   function carregarDados() {
     // setInputs({ ...inputs, id: id });
     axios
-      .get(`${consts.API_URL}/cliente/${id}`)
+      .get(`${consts.API_URL}/tiposervico/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          setAluno(resp.data);
+          setTypeService(resp.data);
         } else {
           console.log(resp);
         }
@@ -32,11 +32,11 @@ const Exclusao = () => {
 
   function handleDelete() {
     axios
-      .delete(`${consts.API_URL}/cliente/${id}`)
+      .delete(`${consts.API_URL}/tiposervico/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          alert("Cliente excluído com sucesso!");
-          navigate("/clientes");
+          alert("Tipo de Serviço excluído com sucesso!");
+          navigate("/tiposervicos");
         } else {
           console.log(resp);
         }
@@ -48,12 +48,12 @@ const Exclusao = () => {
 
   return (
     <>
-      <h1>Exclusão de Aluno</h1>
+      <h1>Exclusão de Tipo de Serviço</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o aluno {aluno.nome}?</p>
-      <FormButtons cancelTarget="/clientes" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
+      <p className="lead">Deseja realmente excluir o Tipo de Serviço {typeService.nome}?</p>
+      <FormButtons cancelTarget="/tiposervicos" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );
 };
 
-export default Exclusao;
+export default Delete;

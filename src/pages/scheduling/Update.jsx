@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import validator from "../../lib/vehicles/ValidatorVehicle";
+import validator from "../../lib/scheduling/ValidatorScheduling";
 import { validate, handleChange } from "../../lib/formUtils";
-import FormVehicle from "../../components/vehicles/Form";
 import consts from "../../consts";
+import FormScheduling from "../../components/scheduling/Form";
 
 const Update = () => {
   const [inputs, setInputs] = useState({});
@@ -20,7 +20,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`${consts.API_URL}/veiculo/${id}`)
+      .get(`${consts.API_URL}/agendamento/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -48,10 +48,10 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`${consts.API_URL}/veiculo/${id}`, inputs).then((resp) => {
+      axios.put(`${consts.API_URL}/agendamento/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
-          alert("Veiculo alterado com sucesso");
-          navigate("/veiculos");
+          alert("Agendamento alterado com sucesso");
+          navigate("/agendamentos");
         }
       });
       console.log("Enviou dados para a API");
@@ -64,9 +64,9 @@ const Update = () => {
 
   return (
     <>
-      <h1>Alteração de Aluno</h1>
+      <h1>Alteração de Agendamento</h1>
       <hr />
-      <FormVehicle handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
+      <FormScheduling handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>
   );
 };

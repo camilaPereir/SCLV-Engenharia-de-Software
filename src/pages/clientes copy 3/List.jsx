@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import estilos from "./Listagem.module.css";
 import { useState } from "react";
+import consts from "../../consts";
 
 const List = () => {
   const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchClientes = () => {
-    axios.get("http://localhost:3333/cliente/")
+    axios.get(`${consts.API_URL}/cliente/`)
     .then((resp) => {
       setClientes(resp.data);
       setLoading(false);

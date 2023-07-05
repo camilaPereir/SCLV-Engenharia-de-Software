@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import validator from "../../lib/funcionarios/ValidatorFuncionario";
 import { validate, handleChange } from "../../lib/formUtils";
 import FormFuncionario from "../../components/funcionarios/Form";
+import consts from "../../consts";
 
 const Update = () => {
   const [inputs, setInputs] = useState({});
@@ -19,7 +20,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`http://localhost:3333/funcionario/${id}`)
+      .get(`${consts.API_URL}/funcionario/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -47,7 +48,7 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`http://localhost:3333/funcionario/${id}`, inputs).then((resp) => {
+      axios.put(`${consts.API_URL}/funcionario/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
           alert("funcionario alterado com sucesso");
           navigate("/funcionarios");

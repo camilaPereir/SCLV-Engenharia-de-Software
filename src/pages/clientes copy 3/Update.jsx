@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import validator from "../../lib/clientes/ValidatorCliente";
 import { validate, handleChange } from "../../lib/formUtils";
 import FormClientes from "../../components/clientes/Form";
+import consts from "../../consts";
 
 const Update = () => {
   const [inputs, setInputs] = useState({});
@@ -19,7 +20,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`http://localhost:3333/cliente/${id}`)
+      .get(`${consts.API_URL}/cliente/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -47,7 +48,7 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`http://localhost:3333/cliente/${id}`, inputs).then((resp) => {
+      axios.put(`${consts.API_URL}/cliente/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
           alert("Cliente alterado com sucesso");
           navigate("/clientes");

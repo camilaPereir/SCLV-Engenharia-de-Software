@@ -31,6 +31,16 @@ import DeleteFinalizacao from './pages/finalizacoes/Delete';
 import ListFinalizacao from './pages/finalizacoes/List';
 import UpdateFinalizacao from './pages/finalizacoes/Update';
 
+import RegisterScheduling from './pages/scheduling/Register';
+import DeleteScheduling from './pages/scheduling/Delete';
+import ListScheduling from './pages/scheduling/List';
+import UpdateScheduling from './pages/scheduling/Update';
+
+import RegisterTypeService from "./pages/type service/Register";
+import DeleteTypeService from "./pages/type service/Delete";
+import ListTypeService from "./pages/type service/List";
+import UpdateTypeService from "./pages/type service/Update";
+
 const App = () => {
   const [tema, setTema] = useState("light");
   return (
@@ -71,6 +81,18 @@ const App = () => {
                 <Route path="cadastrar" element={<RegisterFinalizacao />} />
                 <Route path="alterar/:id" element={<UpdateFinalizacao />} />
                 <Route path="excluir/:id" element={<DeleteFinalizacao />} />
+              </Route>
+              <Route path="agendamentos">
+                <Route index element={<ListScheduling />} />
+                <Route path="cadastrar" element={<RegisterScheduling />} />
+                <Route path="alterar/:id" element={<UpdateScheduling />} />
+                <Route path="excluir/:id" element={<DeleteScheduling />} />
+              </Route>
+              <Route path="tiposervicos">
+                <Route index element={<ListTypeService />} />
+                <Route path="cadastrar" element={<RegisterTypeService />} />
+                <Route path="alterar/:id" element={<UpdateTypeService />} />
+                <Route path="excluir/:id" element={<DeleteTypeService />} />
               </Route>
             </Route>
           </Routes>

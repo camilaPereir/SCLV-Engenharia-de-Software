@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import validator from "../../lib/vehicles/ValidatorVehicle";
+import validator from "../../lib/typeService/ValidatorTypeService";
 import { handleChange, validate } from "../../lib/formUtils";
-import FormVehicle from "../../components/vehicles/Form";
 import consts from "../../consts";
+import FormTypeService from "../../components/typeService/Form";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -23,15 +23,11 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      const postData = {
-        ...inputs,
-        cliente: { id: inputs.idcliente }
-      };
-      axios.post(`${consts.API_URL}/veiculo`, postData)
+      axios.post(`${consts.API_URL}/tiposervico`, inputs)
       .then((resp) => {
         if (resp.status == 200) {
-          alert("Veículo inserido com sucesso");
-          navigate("/veiculos")
+          alert("Tipo de Serviço inserido com sucesso");
+          navigate("/tiposervicos")
         }
       });
       console.log("Enviou dados para a API")
@@ -44,9 +40,9 @@ const Register = () => {
 
   return (
     <>
-      <h1>Cadastro de Veículo</h1>
+      <h1>Cadastro de Tipo de Serviço</h1>
       <hr />
-      <FormVehicle handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
+      <FormTypeService handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>
   );
 };

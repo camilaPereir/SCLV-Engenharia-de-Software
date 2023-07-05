@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import consts from "../../consts";
 
-const Exclusao = () => {
+const Delete = () => {
   const [aluno, setAluno] = useState({});
   const id = useParams().id;
 
@@ -13,7 +13,7 @@ const Exclusao = () => {
   function carregarDados() {
     // setInputs({ ...inputs, id: id });
     axios
-      .get(`${consts.API_URL}/cliente/${id}`)
+      .get(`${consts.API_URL}/agendamento/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setAluno(resp.data);
@@ -32,11 +32,11 @@ const Exclusao = () => {
 
   function handleDelete() {
     axios
-      .delete(`${consts.API_URL}/cliente/${id}`)
+      .delete(`${consts.API_URL}/agendamento/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          alert("Cliente excluído com sucesso!");
-          navigate("/clientes");
+          alert("Agendamento excluído com sucesso!");
+          navigate("/agendamentos");
         } else {
           console.log(resp);
         }
@@ -48,12 +48,12 @@ const Exclusao = () => {
 
   return (
     <>
-      <h1>Exclusão de Aluno</h1>
+      <h1>Exclusão de Agendamento</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o aluno {aluno.nome}?</p>
-      <FormButtons cancelTarget="/clientes" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
+      <p className="lead">Deseja realmente excluir o Agendamento {aluno.nome}?</p>
+      <FormButtons cancelTarget="/agendamentos" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );
 };
 
-export default Exclusao;
+export default Delete;

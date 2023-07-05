@@ -6,13 +6,13 @@ import { useState } from "react";
 import consts from "../../consts";
 
 const List = () => {
-  const [vehicles, setVeiculos] = useState([]);
+  const [typeServices, setTypeServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchVehicles = () => {
-    axios.get(`${consts.API_URL}/veiculo`)
+    axios.get(`${consts.API_URL}/tiposervico`)
     .then((resp) => {
-      setVeiculos(resp.data);
+      setTypeServices(resp.data);
       setLoading(false);
     });
   }
@@ -24,7 +24,7 @@ const List = () => {
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Listagem de Veiculos</h1>
+        <h1>Listagem de Tipos de Serviços</h1>
         <Link className="btn btn-primary" to="cadastrar">
           Novo
         </Link>
@@ -43,29 +43,27 @@ const List = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Placa</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Cor</th>
-              <th>Ano</th>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Tempo Médio</th>
+              <th>Descrição</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            {vehicles.map((vehicle) => (
-              <tr key={vehicle.id}>
-                <td>{vehicle.id}</td>
-                <td>{vehicle.placa}</td>
-                <td>{vehicle.marca}</td>
-                <td>{vehicle.modelo}</td>
-                <td>{vehicle.cor}</td>
-                <td>{vehicle.ano}</td>
+            {typeServices.map((typeService) => (
+              <tr key={typeService.id}>
+                <td>{typeService.id}</td>
+                <td>{typeService.nome}</td>
+                <td>{typeService.preco}</td>
+                <td>{typeService.tempo_medio}</td>
+                <td>{typeService.descricao}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/veiculos/alterar/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/tiposervicos/alterar/${typeService.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/veiculos/excluir/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/tiposervicos/excluir/${typeService.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>

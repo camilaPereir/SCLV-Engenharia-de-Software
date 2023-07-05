@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import validator from "../../lib/finalizacoes/ValidatorFinalizacao";
 import { validate, handleChange } from "../../lib/formUtils";
 import FormFinalizacao from "../../components/finalizacoes/Form";
+import consts from "../../consts";
 
 const Update = () => {
   const [inputs, setInputs] = useState({});
@@ -19,7 +20,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`http://localhost:3333/finalizacao/${id}`)
+      .get(`${consts.API_URL}/finalizacao/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -47,7 +48,7 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`http://localhost:3333/finalizacao/${id}`, inputs).then((resp) => {
+      axios.put(`${consts.API_URL}/finalizacao/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
           alert("Finalizacao alterado com sucesso");
           navigate("/finalizacoes");

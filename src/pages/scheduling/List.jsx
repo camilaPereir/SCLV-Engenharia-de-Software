@@ -6,25 +6,31 @@ import { useState } from "react";
 import consts from "../../consts";
 
 const List = () => {
-  const [vehicles, setVeiculos] = useState([]);
+  const [scheduling, setScheduling] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchVehicles = () => {
-    axios.get(`${consts.API_URL}/veiculo`)
-    .then((resp) => {
-      setVeiculos(resp.data);
-      setLoading(false);
-    });
+  const fetchScheduling = () => {
+    axios
+      .get(`${consts.API_URL}/agendamento?_expand=funcionario&_expand=tiposervico&_expand=veiculo`)
+      .then((resp) => {
+        setScheduling(resp.data);
+        setLoading(false);
+      });
+    // axios.get(`${consts.API_URL}/agendamento`)
+    // .then((resp) => {
+    //   setScheduling(resp.data);
+    //   setLoading(false);
+    // });
   }
 
   useEffect(() => {
-    fetchVehicles();
+    fetchScheduling();
   }, []);
 
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h1>Listagem de Veiculos</h1>
+        <h1>Listagem de agendamentos</h1>
         <Link className="btn btn-primary" to="cadastrar">
           Novo
         </Link>
@@ -43,29 +49,31 @@ const List = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Placa</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Cor</th>
-              <th>Ano</th>
+              <th>Entrada</th>
+              <th>Funcionário</th>
+              <th>Veículo</th>
+              <th>Tipo de Serviço</th>
+              <th>Observações</th>
+              <th>Status</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            {vehicles.map((vehicle) => (
-              <tr key={vehicle.id}>
-                <td>{vehicle.id}</td>
-                <td>{vehicle.placa}</td>
-                <td>{vehicle.marca}</td>
-                <td>{vehicle.modelo}</td>
-                <td>{vehicle.cor}</td>
-                <td>{vehicle.ano}</td>
+            {scheduling.map((scheduling) => (
+              <tr key={scheduling.id}>
+                <td>{scheduling.id}</td>
+                <td>{scheduling.data_entrada}</td>
+                <td>{scheduling.funcionario.nome}</td>
+                <td>{scheduling.veiculo.placa}</td>
+                <td>{scheduling.tipo_servico.nome}</td>
+                <td>{scheduling.observacoes_entrada}</td>
+                <td>{scheduling.status}</td>
                 <td>
                   <>
-                    <Link className="btn btn-sm btn-success me-1" to={`/veiculos/alterar/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-success me-1" to={`/agendamentos/alterar/${scheduling.id}`}>
                       <i className="bi bi-pen" title="Alterar"></i>
                     </Link>
-                    <Link className="btn btn-sm btn-danger" to={`/veiculos/excluir/${vehicle.id}`}>
+                    <Link className="btn btn-sm btn-danger" to={`/agendamentos/excluir/${scheduling.id}`}>
                       <i className="bi bi-trash" title="Excluir"></i>
                     </Link>
                   </>

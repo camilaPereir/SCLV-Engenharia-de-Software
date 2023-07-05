@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import validator from "../../lib/vehicles/ValidatorVehicle";
+import validator from "../../lib/scheduling/ValidatorScheduling";
 import { handleChange, validate } from "../../lib/formUtils";
-import FormVehicle from "../../components/vehicles/Form";
 import consts from "../../consts";
+import FormScheduling from "../../components/scheduling/Form";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -25,13 +25,15 @@ const Register = () => {
     validatorFields(() => {
       const postData = {
         ...inputs,
-        cliente: { id: inputs.idcliente }
+        veiculo: { id: inputs.idveiculo },
+        funcionario: { id: inputs.idfuncionario },
+        tipo_servico: { id: inputs.idtipo_servico }
       };
-      axios.post(`${consts.API_URL}/veiculo`, postData)
+      axios.post(`${consts.API_URL}/agendamento`, postData)
       .then((resp) => {
         if (resp.status == 200) {
-          alert("Veículo inserido com sucesso");
-          navigate("/veiculos")
+          alert("Agendamento inserido com sucesso");
+          navigate("/agendamentos")
         }
       });
       console.log("Enviou dados para a API")
@@ -44,9 +46,9 @@ const Register = () => {
 
   return (
     <>
-      <h1>Cadastro de Veículo</h1>
+      <h1>Cadastro de Agendamento</h1>
       <hr />
-      <FormVehicle handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
+      <FormScheduling handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>
   );
 };

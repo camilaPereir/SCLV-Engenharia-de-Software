@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import validator from "../../lib/vehicles/ValidatorVehicle";
+import validator from "../../lib/typeService/ValidatorTypeService";
 import { validate, handleChange } from "../../lib/formUtils";
 import FormVehicle from "../../components/vehicles/Form";
 import consts from "../../consts";
@@ -20,7 +20,7 @@ const Update = () => {
 
   function fetchData() {
     axios
-      .get(`${consts.API_URL}/veiculo/${id}`)
+      .get(`${consts.API_URL}/tiposervico/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
           setInputs(resp.data);
@@ -48,10 +48,10 @@ const Update = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validateFields(() => {
-      axios.put(`${consts.API_URL}/veiculo/${id}`, inputs).then((resp) => {
+      axios.put(`${consts.API_URL}/tiposervico/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
-          alert("Veiculo alterado com sucesso");
-          navigate("/veiculos");
+          alert("Tipo de Serviço alterado com sucesso");
+          navigate("/tiposervicos");
         }
       });
       console.log("Enviou dados para a API");

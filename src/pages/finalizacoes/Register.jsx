@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import validator from "../../lib/finalizacoes/Validatorfinalizacao";
+import validator from "../../lib/finalizacoes/ValidatorFinalizacao";
 import { handleChange, validate } from "../../lib/formUtils";
 import FormFinalizacao from "../../components/finalizacoes/Form";
+import consts from "../../consts";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -22,9 +23,9 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     validatorFields(() => {
-      axios.post("http://localhost:3333/finalizacao", inputs)
+      axios.post(`${consts.API_URL}/finalizacao`, inputs)
       .then((resp) => {
-        if (resp.status == 201) {
+        if (resp.status == 200) {
           alert("finalizacao inserido com sucesso");
           navigate("/finalizacoes")
         }
