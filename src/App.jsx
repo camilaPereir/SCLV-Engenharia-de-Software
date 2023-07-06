@@ -40,6 +40,7 @@ import RegisterTypeService from "./pages/type service/Register";
 import DeleteTypeService from "./pages/type service/Delete";
 import ListTypeService from "./pages/type service/List";
 import UpdateTypeService from "./pages/type service/Update";
+import Services from "./pages/Services";
 
 const App = () => {
   const [tema, setTema] = useState("light");
@@ -50,6 +51,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Leiaute />}>
               <Route index element={<Home />} />
+              <Route path="servicos" element={<Services />} />
               <Route path="sobre" element={<About />} />
               <Route path="*" element={<NotFound />} />
               <Route path="veiculos">

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import consts from "../../consts";
 
 const Exclusao = () => {
-  const [aluno, setAluno] = useState({});
+  const [clientes, setClientes] = useState({});
   const id = useParams().id;
 
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Exclusao = () => {
       .get(`${consts.API_URL}/cliente/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          setAluno(resp.data);
+          setClientes(resp.data);
         } else {
           console.log(resp);
         }
@@ -48,9 +48,9 @@ const Exclusao = () => {
 
   return (
     <>
-      <h1>Exclusão de Aluno</h1>
+      <h1>Exclusão de Cliente</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o aluno {aluno.nome}?</p>
+      <p className="lead">Deseja realmente excluir o Cliente {clientes.nome}?</p>
       <FormButtons cancelTarget="/clientes" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );

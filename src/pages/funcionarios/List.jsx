@@ -42,12 +42,10 @@ const List = () => {
         <table className={`table table-striped ${estilos.tabela}`}>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Nome</th>
-              <th>IDFILIAL</th>
+              <th>Filial</th>
               <th>CPF</th>
               <th>Telefone</th>
-              <th>Senha</th>
               <th>Rua</th>
               <th>Numero</th>
               <th>Cidade</th>
@@ -58,12 +56,10 @@ const List = () => {
           <tbody>
             {funcionarios.map((funcionario) => (
               <tr key={funcionario.id}>
-                <td>{funcionario.id}</td>
                 <td>{funcionario.nome}</td>
-                <td>{funcionario.idfilial}</td>
+                <td>{funcionario.filial.nome}</td>
                 <td>{funcionario.cpf}</td>
                 <td>{funcionario.telefone}</td>
-                <td>{funcionario.senha}</td>
                 <td>{funcionario.rua}</td>
                 <td>{funcionario.numero}</td>
                 <td>{funcionario.cidade}</td>

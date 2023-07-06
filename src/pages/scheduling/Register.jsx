@@ -30,12 +30,15 @@ const Register = () => {
         tipo_servico: { id: inputs.idtipo_servico }
       };
       axios.post(`${consts.API_URL}/agendamento`, postData)
-      .then((resp) => {
-        if (resp.status == 200) {
-          alert("Agendamento inserido com sucesso");
-          navigate("/agendamentos")
-        }
-      });
+        .then((resp) => {
+          if (resp.status == 200) {
+            alert("Agendamento inserido com sucesso");
+            navigate("/agendamentos")
+          }
+        })
+        .catch((resp) => {
+          alert(resp.response.data.message);
+        });
       console.log("Enviou dados para a API")
     });
   }

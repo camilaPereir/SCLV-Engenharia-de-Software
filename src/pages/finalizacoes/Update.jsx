@@ -53,8 +53,12 @@ const Update = () => {
           alert("Finalizacao alterado com sucesso");
           navigate("/finalizacoes");
         }
-      });
+      })
+      .catch((resp) => {
+        alert(resp.response.data.message);
+    });
       console.log("Enviou dados para a API");
+      
     });
   }
 

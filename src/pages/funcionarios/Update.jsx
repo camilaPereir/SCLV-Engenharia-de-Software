@@ -50,9 +50,12 @@ const Update = () => {
     validateFields(() => {
       axios.put(`${consts.API_URL}/funcionario/${id}`, inputs).then((resp) => {
         if (resp.status == 200) {
-          alert("funcionario alterado com sucesso");
+          alert("Funcionário alterado com sucesso");
           navigate("/funcionarios");
         }
+      })
+      .catch((resp) => {
+        alert(resp.response.data.message);
       });
       console.log("Enviou dados para a API");
     });

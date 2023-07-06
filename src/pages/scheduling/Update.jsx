@@ -53,7 +53,10 @@ const Update = () => {
           alert("Agendamento alterado com sucesso");
           navigate("/agendamentos");
         }
-      });
+      })
+        .catch((resp) => {
+          alert(resp.response.data.message);
+        });
       console.log("Enviou dados para a API");
     });
   }

@@ -33,8 +33,7 @@ const Header = () => {
               <NavLink to="/filiais" className="nav-link">Filiais</NavLink>
               <NavLink to="/funcionarios" className="nav-link">Funcionarios</NavLink>
               <NavLink to="/tiposervicos" className="nav-link">Tipos de Serviços</NavLink>
-              <NavLink to="/agendamentos" className="nav-link">Agendamentos</NavLink>
-              <NavLink to="/finalizacoes" className="nav-link">Finalizações</NavLink>
+              <NavLink to="/servicos" className="nav-link">Serviços</NavLink>
               <NavLink to="/sobre" className="nav-link">Sobre</NavLink>
 
               <a href="#" className="nav-link" onClick={handleTemaClick}>

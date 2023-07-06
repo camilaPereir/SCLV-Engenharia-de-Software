@@ -53,7 +53,10 @@ const Update = () => {
           alert("Tipo de Serviço alterado com sucesso");
           navigate("/tiposervicos");
         }
-      });
+      })
+      .catch((resp) => {
+        alert(resp.response.data.message);
+    });
       console.log("Enviou dados para a API");
     });
   }
@@ -64,7 +67,7 @@ const Update = () => {
 
   return (
     <>
-      <h1>Alteração de Aluno</h1>
+      <h1>Alteração de Tipo de Serviço</h1>
       <hr />
       <FormVehicle handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>
