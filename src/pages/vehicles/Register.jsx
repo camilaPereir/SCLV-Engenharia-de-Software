@@ -28,12 +28,15 @@ const Register = () => {
         cliente: { id: inputs.idcliente }
       };
       axios.post(`${consts.API_URL}/veiculo`, postData)
-      .then((resp) => {
-        if (resp.status == 200) {
-          alert("Veículo inserido com sucesso");
-          navigate("/veiculos")
-        }
-      });
+        .then((resp) => {
+          if (resp.status == 200) {
+            alert("Veículo inserido com sucesso");
+            navigate("/veiculos")
+          }
+        })
+        .catch((resp) => {
+          alert(resp.response.data.message);
+        });
       console.log("Enviou dados para a API")
     });
   }

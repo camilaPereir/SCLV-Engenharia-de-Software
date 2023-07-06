@@ -56,9 +56,8 @@ const List = () => {
                 <td>{finalizacao.id}</td>
                 <td>{finalizacao.data_saida}</td>
                 <td>{finalizacao.observacoes_saida}</td>
-                <td>{finalizacao.conf_pag}</td>
+                <td>{finalizacao.conf_pag ? 'Pago' : 'Não Pago'}</td>
                 <td>{finalizacao.id_agendamento}</td>
-                <td>{finalizacao.idforma_pagamento}</td>
                 <td>{finalizacao.valor_total}</td>
                 <td>
                   <>

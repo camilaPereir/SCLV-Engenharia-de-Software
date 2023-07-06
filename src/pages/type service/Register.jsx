@@ -29,7 +29,10 @@ const Register = () => {
           alert("Tipo de Serviço inserido com sucesso");
           navigate("/tiposervicos")
         }
-      });
+      })
+      .catch((resp) => {
+        alert(resp.response.data.message);
+    });
       console.log("Enviou dados para a API")
     });
   }

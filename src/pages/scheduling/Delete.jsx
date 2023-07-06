@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import consts from "../../consts";
 
 const Delete = () => {
-  const [aluno, setAluno] = useState({});
+  const [scheduling, setScheduling] = useState({});
   const id = useParams().id;
 
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Delete = () => {
       .get(`${consts.API_URL}/agendamento/${id}`)
       .then((resp) => {
         if (resp.status === 200) {
-          setAluno(resp.data);
+          setScheduling(resp.data);
         } else {
           console.log(resp);
         }
@@ -50,7 +50,7 @@ const Delete = () => {
     <>
       <h1>Exclusão de Agendamento</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o Agendamento {aluno.nome}?</p>
+      <p className="lead">Deseja realmente excluir o Agendamento de ID {scheduling.id}?</p>
       <FormButtons cancelTarget="/agendamentos" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );

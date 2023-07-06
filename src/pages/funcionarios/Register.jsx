@@ -24,12 +24,15 @@ const Register = () => {
     e.preventDefault();
     validatorFields(() => {
       axios.post(`${consts.API_URL}/funcionario`, inputs)
-      .then((resp) => {
-        if (resp.status == 200) {
-          alert("funcionario inserido com sucesso");
-          navigate("/funcionarios")
-        }
-      });
+        .then((resp) => {
+          if (resp.status == 200) {
+            alert("funcionario inserido com sucesso");
+            navigate("/funcionarios")
+          }
+        })
+        .catch((resp) => {
+          alert(resp.response.data.message);
+        });
       console.log("Enviou dados para a API")
     });
   }
@@ -40,7 +43,7 @@ const Register = () => {
 
   return (
     <>
-      <h1>Cadastro de funcionarios</h1>
+      <h1>Cadastro de Funcionários</h1>
       <hr />
       <FormFuncionario handleSubmit={handleSubmit} handleChange={handleChangeLocal} inputs={inputs} errors={errors} />
     </>

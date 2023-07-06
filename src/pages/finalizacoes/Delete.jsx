@@ -50,7 +50,7 @@ const Exclusao = () => {
     <>
       <h1>Exclusão de Finalizacao</h1>
       <hr />
-      <p className="lead">Deseja realmente excluir o finalizacao {finalizacao.nome}?</p>
+      <p className="lead">Deseja realmente excluir a Finalizacao de ID {finalizacao.id}?</p>
       <FormButtons cancelTarget="/finalizacoes" negativeTitle="Não" positiveTitle="Sim" positiveAction={handleDelete} />
     </>
   );
